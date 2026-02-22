@@ -1,0 +1,17 @@
+SunPeak Logistics Services
+TAX INVOICE
+Invoice Number: INV-88004
+Invoice Date: 24-02-2026
+Vendor ID: SPL-008
+Country: IN
+Currency: INR
+PO Reference: 45999  (as per mail thread)
+
+Service Lines
+- Inland Freight (West Zone)        120000.00
+- Handling Charges                    30000.00
+
+Subtotal 150000.00
+GST 18%  27000.00
+Invoice Total INR 177000.00
+Payment Due Date: 10/03/2026

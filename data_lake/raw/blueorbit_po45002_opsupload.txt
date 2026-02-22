@@ -1,0 +1,16 @@
+*** PURCHASE ORDER ***
+PO# 45002
+Date : 23/02/2026
+Supplier: BlueOrbit Components Pte
+Vendor Id : BO-771
+Country = SG
+Currency = USD
+
+Item details
+A. Sensor Module B7        qty 40   unit 60.00      line 2400.00
+B. Connector Kit C-11      qty 30   unit 40.00      line 1200.00
+
+Subtotal USD 3,600.00
+Tax 8%      USD   288.00
+Total       USD 3,888.00
+Terms: NET45

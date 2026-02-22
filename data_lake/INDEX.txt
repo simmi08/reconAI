@@ -1,0 +1,46 @@
+ReconAI Synthetic Raw Data Lake Index
+Folder: ./data_lake/raw/
+
+S1) Happy path (PO + Invoice + GRN match)
+Files: po_dump_acme_45001_signedcopy.txt, ap_scan_acme_88001_ok_23-02-26.txt, wrh_rcpt_1138_acme_p2_23Feb26.txt
+Note: PO total equals invoice total; GRN shows full receipt.
+
+S2) Waiting for invoice (PO + GRN only)
+Files: blueorbit_po45002_opsupload.txt, docknote_blueorbit_batch77_2026-02-24.txt
+Note: Goods received in full, invoice document missing.
+
+S3) Waiting for goods receipt (PO + Invoice only)
+Files: officeworks_po_45003_revA.txt, vendorbill_deltaow_88003_feb24.txt
+Note: Invoice exists against PO, no GRN document present.
+
+S4) Missing PO
+Files: sunpeak_bill_ref45999_mailcopy.txt
+Note: Invoice references PO 45999, but no PO file exists.
+
+S5) Amount mismatch
+Files: us_po_45005_rheinmach_branch.txt, scan_rmach_2026wk08_inv88005.txt
+Note: Invoice amount is clearly higher than PO amount.
+
+S6) Duplicate invoice
+Files: novachem_inv88006_original_20260224.txt, image2text_novachem_88006_rescan_bad.txt, novachem_po45006_master.txt
+Note: Same invoice number appears twice for same PO with different formatting.
+
+S7) Cross-country/currency mismatch
+Files: us_po_45005_rheinmach_branch.txt, scan_rmach_2026wk08_inv88005.txt
+Note: PO is US/USD while invoice is DE/EUR.
+
+S8) Messy or low-quality document
+Files: image2text_novachem_88006_rescan_bad.txt
+Note: OCR-like noise, typos, and conflicting total values in one invoice.
+
+S9) Multi-line items (3+)
+Files: officeworks_po_45003_revA.txt, vendorbill_deltaow_88003_feb24.txt
+Note: Both docs include 3 line items with totals adding up.
+
+S10) Partial delivery
+Files: titansteel_po45007_procurement.txt, titan_sw_invoice88007_fullqty.txt, partial_grn_titantruckA_25022026.txt
+Note: GRN shows received quantity lower than PO for rebar, invoice bills full quantity.
+
+Noise documents
+Files: mailchain_ap_followup_week8.txt
+Note: Internal AP/procurement email thread for classification noise.

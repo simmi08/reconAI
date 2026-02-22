@@ -1,0 +1,17 @@
+PURCHASE ORDER DOCUMENT
+PO No. 45003
+Date: Feb 23 2026
+Vendor: Delta Office Works LLC
+Vendor code: DOW-US-404
+Country: US
+Currency: USD
+
+Line Item List:
+1 | Ergo Chair Pro          | Qty 12 | Unit 220.00 | Line 2640.00
+2 | Standing Desk XL        | Qty  4 | Unit 650.00 | Line 2600.00
+3 | Cable Management Kit    | Qty 20 | Unit  25.00 | Line  500.00
+
+Subtotal: 5740.00
+Sales Tax 8%: 459.20
+Total Amount: USD 6199.20
+Ship method: Ground

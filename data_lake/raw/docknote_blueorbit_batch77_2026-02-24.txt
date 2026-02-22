@@ -1,0 +1,13 @@
+Goods Receipt / Warehouse Copy
+GRN Number: GRN-33002
+GRN Date: 2026-02-24
+PO Ref: 45002
+Vendor: BlueOrbit Components Pte
+Country: SG
+
+Received Qty Check
+Sensor Module B7   ordered:40   recvd:40
+Connector Kit C-11 ordered:30   recvd:30
+
+All cartons in good condition.
+Receiver sign: M.Jacobs

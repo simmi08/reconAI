@@ -1,0 +1,10 @@
+Subject: RE: Outstanding AP docs for week 8
+Date: 2026-02-25
+From: ap.team@reconai-demo.local
+To: procurement@reconai-demo.local; stores@reconai-demo.local
+
+- Need invoice for PO 45002 (BlueOrbit) before payment run.
+- GRN for PO 45003 still not in system, vendor already sent INV-88003.
+- Possible duplicate for INV-88006 (NovaChem). Please verify scan copy vs original.
+
+Attachment note: one scanned invoice unreadable near total field.

@@ -1,0 +1,15 @@
+PURCHASE ORDER
+PO#: 45007
+PO Date: 2026-02-25
+Vendor: Titan Steel Works
+Vendor ID: TSW-17
+Country: IN
+Currency: INR
+
+Line Items
+Rebar Bundle 12mm        Qty 100   Unit 1000.00   Line 100000.00
+Binding Wire Roll        Qty  50   Unit  400.00   Line  20000.00
+
+Subtotal 120000.00
+GST 18% 21600.00
+Total PO Amount INR 141600.00

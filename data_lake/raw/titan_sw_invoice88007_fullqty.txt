@@ -1,0 +1,16 @@
+TAX INVOICE
+Invoice No: INV-88007
+Invoice Date: 25/02/2026
+Vendor: Titan Steel Works
+PO Ref: 45007
+Country: IN
+Currency: INR
+
+Item                        Qty   Unit Price    Line Total
+Rebar Bundle 12mm           100   1000.00       100000.00
+Binding Wire Roll            50    400.00        20000.00
+
+Subtotal: 120000.00
+GST 18%: 21600.00
+INVOICE TOTAL: 141600.00
+Payment Terms: Net 30

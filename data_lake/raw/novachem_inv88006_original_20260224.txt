@@ -1,0 +1,15 @@
+INVOICE DOCUMENT
+Invoice Number: INV-88006
+Date: 2026-02-24
+Vendor: NovaChem Labs Pvt Ltd (IN)
+PO Number: 45006
+Currency: INR
+
+Description            Qty   Unit     Amount
+Catalyst Refill Kit    50    900.00   45000.00
+Safety Drum 20L        10   1000.00   10000.00
+
+Subtotal: 55000.00
+Tax: 4000.00
+Grand Total: INR 59000.00
+Due Date: 26-03-2026

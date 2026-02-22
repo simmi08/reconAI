@@ -1,0 +1,16 @@
+INVOICE
+Invoice Number: INV-88001
+Invoice Date: 23/02/2026
+Vendor Name : Acme Industrial Pvt Ltd
+Vendor ID: VEND-ACM-991
+PO Ref: 45001
+Country: IN     Currency: INR
+
+Description                Qty    Rate        Amount
+Stainless Valve 2in        10     5000.00     50000.00
+Pressure Gauge Model X      2    25000.00     50000.00
+
+Subtotal 100000.00
+Tax (GST 18%) 18000.00
+TOTAL DUE: INR 118000.00
+Due Date: 25-03-2026

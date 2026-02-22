@@ -1,0 +1,13 @@
+N0VACHEM L4BS  --- scan copy ---
+inv no : INV-88006   po ? 45006
+Doc dt : Feb 24 2026
+Country maybe IN   Currrency INR
+
+ln1 Cataly5t Ref1ll kit   qtv 50   rate 900   ext 45000
+ln2 saftey drurn 20L      qty 10   rate 1000  ext 10000
+
+sub tottl = 55,000
+TAX ?? = 4,000
+TOTAL = 58,900   (stamped)
+Grand Total Payable = INR 59,000
+note: OCR confidence low....corner text unreadable

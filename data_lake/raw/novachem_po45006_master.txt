@@ -1,0 +1,14 @@
+Purchase Order - NovaChem Labs
+PO No: 45006
+Date: 2026-02-24
+Vendor: NovaChem Labs Pvt Ltd
+Country: IN
+Currency: INR
+
+Items Ordered
+Catalyst Refill Kit     Qty 50   Unit 900.00   Line 45000.00
+Safety Drum 20L         Qty 10   Unit 1000.00  Line 10000.00
+
+Subtotal INR 55000.00
+GST 7.2727% INR 4000.00
+Total INR 59000.00

@@ -1,0 +1,13 @@
+Goods Receipt Note
+GRN Number: GRN-33007
+Date: Feb 25 2026
+PO Number: 45007
+Vendor: Titan Steel Works
+Country: IN
+
+Receipt Lines
+Rebar Bundle 12mm     Ordered 100    Received 80
+Binding Wire Roll     Ordered 50     Received 50
+
+Warehouse Remark: Partial truck arrival, balance pending.
+GRN Status: PARTIAL

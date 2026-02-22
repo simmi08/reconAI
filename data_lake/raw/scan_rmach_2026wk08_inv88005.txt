@@ -1,0 +1,16 @@
+RECHNUNG / INVOICE
+Invoice No: INV-88005
+Invoice Date: 24/02/2026
+PO Ref: 45005
+Vendor: RheinMach GmbH
+Country: DE
+Currency: EUR
+
+Positionen
+1. Servo Motor Pack    Menge 5   Preis 1200.00   Summe 6000.00
+2. Control Unit v2     Menge 5   Preis 1200.00   Summe 6000.00
+
+Zwischensumme: EUR 12000.00
+MwSt 0%: EUR 0.00
+GESAMT: EUR 12000.00
+Payment terms: 14 days

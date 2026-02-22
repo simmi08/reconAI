@@ -1,0 +1,16 @@
+PURCHASE ORDER
+PO Number: 45001
+PO Date: 2026-02-23
+Vendor: Acme Industrial Pvt Ltd   (VEND-ACM-991)
+Country: IN
+Currency: INR
+Ship To: ReconAI Plant 2, Pune
+
+Line Items
+1) Stainless Valve 2in         Qty 10    Unit 5,000.00     Line 50,000.00
+2) Pressure Gauge Model X      Qty 2     Unit 25,000.00    Line 50,000.00
+
+Sub total : 100,000.00
+GST 18%   :  18,000.00
+Grand Total (INR): 118,000.00
+Payment Terms: Net 30 days

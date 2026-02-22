@@ -1,0 +1,13 @@
+GOODS RECEIPT NOTE
+GRN No: GRN-33001
+Date: Feb 23 2026
+PO Number: 45001
+Vendor: Acme Industrial Pvt Ltd
+Country: IN
+
+Received Items (Full Delivery)
+- Stainless Valve 2in ........ Ordered 10 / Received 10
+- Pressure Gauge Model X ..... Ordered 2  / Received 2
+
+Receiver: Stores Team A
+Status: COMPLETE
