@@ -9,23 +9,6 @@ ReconAI is a full-stack prototype for procurement reconciliation from a chaotic 
 - Gemini (`gemini-3-flash-preview`) via Google GenAI SDK (server-side only)
 - TailwindCSS
 
-## Important: Reuse Existing Postgres Container
-
-This project **reuses** the global Postgres instance documented in:
-`/Users/saumyas/personalProjects/README.md`
-
-Do not create a new DB container.
-
-Per that README:
-- Container name: `local-postgres`
-- Port: `localhost:5432`
-- Create database/user with:
-  - `docker exec -it local-postgres psql -U postgres -c "CREATE DATABASE <db_name>;"`
-  - `docker exec -it local-postgres psql -U postgres -c "CREATE USER <db_user> WITH PASSWORD '<db_password>';"`
-  - `docker exec -it local-postgres psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE <db_name> TO <db_user>;"`
-
-Use this `DATABASE_URL` pattern:
-- `postgresql://<db_user>:<db_password>@localhost:5432/<db_name>`
 
 ## Setup
 
@@ -101,5 +84,4 @@ Includes tests for:
 
 ## Notes
 
-- Gemini API key is never exposed to client-side code.
 - If `GEMINI_API_KEY` is missing, extraction falls back to a deterministic heuristic parser for local demo continuity.
