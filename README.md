@@ -2,6 +2,23 @@
 
 ReconAI is a full-stack prototype for procurement reconciliation from a chaotic raw data lake.
 
+## Product Walkthrough
+
+### 1) Dashboard: KPI + Exception Queue
+![Dashboard overview](docs/screenshots/01-dashboard-overview.png)
+
+### 2) Transactions: State + Review Status
+![Transactions list with review status](docs/screenshots/02-transactions-review-column.png)
+
+### 3) Transaction Detail: Documents Tab
+![Transaction detail documents tab](docs/screenshots/03-transaction-detail-documents.png)
+
+### 4) Transaction Detail: Checks Tab
+![Transaction detail checks tab](docs/screenshots/04-transaction-detail-checks.png)
+
+### 5) Transaction Detail: Timeline Tab
+![Transaction detail timeline tab](docs/screenshots/05-transaction-detail-timeline.png)
+
 ## Stack
 
 - Next.js App Router + TypeScript
