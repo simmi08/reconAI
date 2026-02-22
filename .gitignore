@@ -5,3 +5,9 @@ storage
 .env
 dist
 coverage
+
+.DS_Store
+tsconfig.tsbuildinfo
+
+.DS_Store
+tsconfig.tsbuildinfo
