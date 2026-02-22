@@ -6,7 +6,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ReconAI",
-  description: "Procurement reconciliation prototype"
+  description: "AI-Powered Procurement Reconciliation"
 };
 
 const links = [
@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
               <div>
                 <p className="text-lg font-semibold text-slate-900">ReconAI</p>
-                <p className="text-xs text-slate-500">Finance + Procurement Reconciliation</p>
+                <p className="text-xs text-slate-500">AI-Powered Procurement Reconciliation</p>
               </div>
               <nav className="flex gap-3 text-sm font-medium text-slate-700">
                 {links.map((link) => (
