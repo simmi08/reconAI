@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { getConfig } from "@/core/config";
 import {
   getTransactionAuditEvents,
   getTransactionById,
@@ -13,6 +14,7 @@ import { JsonViewer } from "@/ui/components/JsonViewer";
 import { StateBadge } from "@/ui/components/StateBadge";
 import { TransactionDetailActions } from "@/ui/components/TransactionDetailActions";
 import { TransactionReviewResolvePanel } from "@/ui/components/TransactionReviewResolvePanel";
+import { TransactionStorageDownloadButton } from "@/ui/components/TransactionStorageDownloadButton";
 import { formatDateTime } from "@/ui/formatters";
 
 export const dynamic = "force-dynamic";
@@ -48,6 +50,8 @@ function issueTitleForCheck(checkType: string, status: string): string {
 
 export default async function TransactionDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  const config = getConfig();
+  const hasSupabaseStorageDownload = Boolean(config.supabase.url && config.supabase.serviceRoleKey);
 
   const [transaction, docs, checks, events, latestResolution] = await Promise.all([
     getTransactionById(id),
@@ -73,6 +77,12 @@ export default async function TransactionDetailPage({ params }: { params: Promis
         <p className="mt-1 text-sm text-slate-600">
           Vendor: {transaction.vendorName ?? "-"} | Country: {transaction.country ?? "-"} | Currency: {transaction.currency ?? "-"}
         </p>
+        <div className="mt-3">
+          <TransactionStorageDownloadButton
+            transactionKey={transaction.transactionKey}
+            enabled={hasSupabaseStorageDownload}
+          />
+        </div>
       </section>
 
       <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">

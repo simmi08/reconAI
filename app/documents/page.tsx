@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getConfig } from "@/core/config";
 import { listDocuments } from "@/db/queries";
 import { Badge } from "@/ui/components/Badge";
+import { DocumentRetryAction } from "@/ui/components/DocumentRetryAction";
 import { formatConfidence, formatDateTime } from "@/ui/formatters";
 
 export const dynamic = "force-dynamic";
@@ -53,6 +54,7 @@ export default async function DocumentsPage({
               <th className="px-2 py-2">Invoice</th>
               <th className="px-2 py-2">Vendor</th>
               <th className="px-2 py-2">Processed At</th>
+              <th className="px-2 py-2">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -74,6 +76,7 @@ export default async function DocumentsPage({
                 <td className="px-2 py-2">{row.invoiceNumber ?? "-"}</td>
                 <td className="px-2 py-2">{row.vendorName ?? "-"}</td>
                 <td className="px-2 py-2 text-slate-600">{formatDateTime(row.processedAt)}</td>
+                <td className="px-2 py-2">{row.status === "FAILED" ? <DocumentRetryAction documentId={row.id} /> : "-"}</td>
               </tr>
             ))}
           </tbody>

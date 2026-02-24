@@ -1,6 +1,6 @@
 node_modules
 .next
-storage
+/storage/
 *.log
 .env
 dist
@@ -9,5 +9,9 @@ coverage
 .DS_Store
 tsconfig.tsbuildinfo
 
-.DS_Store
-tsconfig.tsbuildinfo
+# Keep historical raw samples in git as-is; ignore new local raw dumps.
+/data_lake/raw/*
+
+# Local synthetic datasets and loader script (do not commit)
+/testdata/
+/scripts/load-testset.sh

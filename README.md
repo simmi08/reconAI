@@ -43,6 +43,15 @@ cp .env.example .env
 
 3. Update `.env` values (`DATABASE_URL`, `GEMINI_API_KEY`, etc.).
 
+For Supabase-hosted Postgres:
+- Set `DATABASE_URL` to Supabase pooler connection string.
+- Set `DATABASE_URL_MIGRATE` to Supabase direct connection string.
+
+Required Supabase storage configuration:
+- Set `SUPABASE_URL` + `SUPABASE_SECRET_KEY` (recommended).
+- Legacy fallback supported: `SUPABASE_SERVICE_ROLE_KEY`.
+- Set `SUPABASE_RAW_BUCKET`, `SUPABASE_STORAGE_BUCKET` and optional prefixes.
+
 4. Run migrations:
 
 ```bash
@@ -59,15 +68,15 @@ Open: `http://localhost:3000/dashboard`
 
 ## Raw Data + Storage
 
-- Raw input directory: `./data_lake/raw`
-- Runtime output directory: `./storage`
-  - `storage/transactions/<transactionKey>/docs/...`
-  - `storage/transactions/<transactionKey>/extracted/<documentId>.json`
-  - `storage/transactions/<transactionKey>/transaction.json`
+- Raw input source: `supabase://<SUPABASE_RAW_BUCKET>/<SUPABASE_RAW_PREFIX>`
+- Processed artifacts target: `supabase://<SUPABASE_STORAGE_BUCKET>/<SUPABASE_STORAGE_PREFIX>/transactions/<transactionKey>/...`
+  - `.../docs/<originalFileName>`
+  - `.../extracted/<documentId>.json`
+  - `.../transaction.json`
 
 ## Ingestion Flow
 
-- `POST /api/ingest/scan` scans raw files, computes sha256, and dedupes by hash.
+- `POST /api/ingest/scan` scans Supabase raw bucket files, computes sha256, and dedupes by hash.
 - `POST /api/ingest/process?limit=25` processes backlog synchronously.
 
 CLI equivalents:
@@ -81,6 +90,8 @@ npm run ingest:process
 
 - `POST /api/ingest/scan`
 - `POST /api/ingest/process?limit=25&retryFailed=1`
+- `POST /api/storage/upload-raw`
+- `GET /api/storage/transactions/[transactionKey]/download`
 - `GET /api/documents`
 - `GET /api/transactions`
 - `GET /api/transactions/[id]`
@@ -102,3 +113,37 @@ Includes tests for:
 ## Notes
 
 - If `GEMINI_API_KEY` is missing, extraction falls back to a deterministic heuristic parser for local demo continuity.
+
+## Render + Supabase Deploy
+
+Set these environment variables in Render service settings:
+- `DATABASE_URL` (Supabase pooler URI, with `sslmode=require`)
+- `GEMINI_API_KEY`
+- `SUPABASE_URL`
+- `SUPABASE_SECRET_KEY` (recommended)
+- `SUPABASE_SERVICE_ROLE_KEY` (legacy fallback)
+- `SUPABASE_RAW_BUCKET`
+- `SUPABASE_STORAGE_BUCKET`
+- `SUPABASE_RAW_PREFIX`
+- `SUPABASE_STORAGE_PREFIX`
+- optional: `GEMINI_MODEL`, `PROCESS_BATCH_SIZE`, `CONFIDENCE_THRESHOLD`, `AMOUNT_TOLERANCE_PCT`
+
+For migrations in CI (GitHub Actions), set:
+- `DATABASE_URL_MIGRATE` (Supabase direct DB URI, with `sslmode=require`)
+
+### GitHub Action for Supabase Migrations
+
+- Workflow file: `.github/workflows/db-migrate.yml`
+- Triggers:
+  - Manual: GitHub -> Actions -> `DB Migrate` -> `Run workflow`
+  - Auto on push: when DB/migration files change on `main`/`master`
+
+Required GitHub secret:
+- `DATABASE_URL_MIGRATE`
+  - Add in GitHub -> Repo -> Settings -> Secrets and variables -> Actions -> New repository secret
+
+Where to find migrate URL in Supabase:
+- Supabase Dashboard -> Project Settings -> Database -> Connection string
+- Copy the **Direct connection** URI (not the pooler URL), then append `?sslmode=require` if not already present.
+- Typical format:
+  - `postgresql://postgres:<PASSWORD>@db.<project-ref>.supabase.co:5432/postgres?sslmode=require`

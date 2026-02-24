@@ -1,7 +1,7 @@
 import crypto from "node:crypto";
-import fs from "node:fs/promises";
 import path from "node:path";
 
+import { downloadFromRawBucket, inferMimeType, listRawObjectKeys } from "@/core/supabase/storageClient";
 import type { ScanFileResult } from "@/types/domain";
 
 const TEXT_MIME_BY_EXT: Record<string, string> = {
@@ -25,33 +25,50 @@ function isIgnoredFile(fileName: string): boolean {
   return fileName.startsWith(".");
 }
 
-export async function scanRawDirectory(rawDir: string): Promise<ScanFileResult[]> {
-  const entries = await fs.readdir(rawDir, { withFileTypes: true });
-  const files = entries.filter((entry) => {
-    if (!entry.isFile()) {
-      return false;
-    }
-    if (isIgnoredFile(entry.name)) {
-      return false;
-    }
-    const ext = path.extname(entry.name).toLowerCase();
-    return Boolean(TEXT_MIME_BY_EXT[ext]);
-  });
+function isIgnoredPath(objectKey: string): boolean {
+  const segments = objectKey.split("/").filter(Boolean);
+  if (segments.some((segment) => segment.startsWith("."))) {
+    return true;
+  }
+  return segments.some((segment) => IGNORED_FILE_NAMES.has(segment));
+}
+
+export async function scanRawDirectory(): Promise<ScanFileResult[]> {
+  const objectKeys = await listRawObjectKeys();
   const results: ScanFileResult[] = [];
 
-  for (const file of files) {
-    const sourcePath = path.join(rawDir, file.name);
-    const stat = await fs.stat(sourcePath);
-    const content = await fs.readFile(sourcePath);
-    const ext = path.extname(file.name).toLowerCase();
+  for (const objectKey of objectKeys) {
+    if (isIgnoredPath(objectKey)) {
+      continue;
+    }
+
+    const ext = path.extname(objectKey).toLowerCase();
+    if (!TEXT_MIME_BY_EXT[ext]) {
+      continue;
+    }
+
+    const fileName = path.basename(objectKey);
+    if (isIgnoredFile(fileName)) {
+      continue;
+    }
+
+    const bytes = await downloadFromRawBucket(objectKey);
     results.push({
-      sourcePath,
-      fileName: file.name,
-      sizeBytes: stat.size,
-      mimeType: TEXT_MIME_BY_EXT[ext] ?? null,
-      sha256: toSha256(content)
+      sourcePath: objectKey,
+      fileName: objectKey,
+      sizeBytes: bytes.byteLength,
+      mimeType: inferMimeType(fileName),
+      sha256: toSha256(bytes)
     });
   }
 
   return results.sort((a, b) => a.fileName.localeCompare(b.fileName));
+}
+
+export async function listRawFileNames(): Promise<string[]> {
+  const objectKeys = await listRawObjectKeys();
+  return objectKeys
+    .filter((objectKey) => !isIgnoredPath(objectKey))
+    .filter((objectKey) => Boolean(TEXT_MIME_BY_EXT[path.extname(objectKey).toLowerCase()]))
+    .sort((a, b) => a.localeCompare(b));
 }

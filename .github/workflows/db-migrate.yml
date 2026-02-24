@@ -1,0 +1,50 @@
+name: DB Migrate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - "drizzle/**"
+      - "src/db/**"
+      - "src/core/config.ts"
+      - "drizzle.config.ts"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/db-migrate.yml"
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    concurrency:
+      group: reconai-db-migrate
+      cancel-in-progress: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate migration connection secret
+        run: |
+          if [ -z "${DATABASE_URL_MIGRATE}" ]; then
+            echo "DATABASE_URL_MIGRATE is missing. Add it in GitHub repo secrets."
+            exit 1
+          fi
+        env:
+          DATABASE_URL_MIGRATE: ${{ secrets.DATABASE_URL_MIGRATE }}
+
+      - name: Run Drizzle migrations
+        run: npm run db:migrate
+        env:
+          DATABASE_URL_MIGRATE: ${{ secrets.DATABASE_URL_MIGRATE }}

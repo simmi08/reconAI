@@ -180,8 +180,7 @@ async function recomputeTransaction(transactionId: string) {
 }
 
 export async function scanAndRegisterDocuments() {
-  const config = getConfig();
-  const scannedFiles = await scanRawDirectory(config.rawDataDir);
+  const scannedFiles = await scanRawDirectory();
 
   let discovered = 0;
   let alreadyProcessed = 0;
