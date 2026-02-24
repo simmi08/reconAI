@@ -2,6 +2,8 @@
 
 ReconAI - AI-Powered Procurement Reconciliation
 
+Access the app here - https://reconai-qi2a.onrender.com
+
 ## Product Walkthrough
 
 ### 1) Dashboard: KPI + Exception Queue
