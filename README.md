@@ -1,6 +1,6 @@
 # ReconAI
 
-ReconAI is a full-stack prototype for procurement reconciliation from a chaotic raw data lake.
+ReconAI - AI-Powered Procurement Reconciliation
 
 ## Product Walkthrough
 
